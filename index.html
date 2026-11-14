@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fffbf0">
+  <meta name="description" content="A lovely evening at Ember & Oak starts with a simple reservation.">
+  <title>Ember &amp; Oak — A table worth gathering around</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Allura&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Ember and Oak home">Ember <span>&amp;</span> Oak</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#book">Reservations</a>
+      <a href="#story">Our table</a>
+      <a href="#manage">Manage booking</a>
+    </nav>
+    <a class="staff-link" href="staff.html">Staff view <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main>
+    <section class="hero section-wrap" id="home">
+      <div class="hero-copy">
+        <div class="rating-pill"><span aria-hidden="true">★★★★★</span> <strong>4.9</strong><span class="rating-note">from 1,200+ guests</span></div>
+        <p class="eyebrow">GOOD FOOD. GOOD COMPANY.</p>
+        <h1>Reserve your table,<br><em>effortlessly.</em></h1>
+        <p class="hero-description">An evening of seasonal plates, warm light, and one less thing to plan.</p>
+        <a class="button button-dark" href="#book">Book a table <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="carousel" aria-label="Ember and Oak restaurant gallery">
+        <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous image">←</button>
+        <div class="carousel-track" id="carousel-track">
+          <div class="carousel-image carousel-side" data-slide="0" role="img" aria-label="A warmly lit restaurant dining room"></div>
+          <div class="carousel-image carousel-main" data-slide="1" role="img" aria-label="A beautifully plated seasonal dinner"></div>
+          <div class="carousel-image carousel-side" data-slide="2" role="img" aria-label="Friends gathered around a dinner table"></div>
+        </div>
+        <button class="carousel-arrow carousel-next" type="button" aria-label="Next image">→</button>
+        <div class="carousel-dots" id="carousel-dots" aria-label="Choose gallery image"></div>
+      </div>
+      <a class="scroll-hint" href="#story"><span></span> A LITTLE MORE ABOUT US</a>
+    </section>
+
+    <section class="story-section section-wrap" id="story">
+      <div class="story-image image-card" role="img" aria-label="A quiet, candlelit restaurant interior"></div>
+      <div class="story-copy">
+        <p class="eyebrow">A PLACE TO SLOW DOWN</p>
+        <h2>Gather round.<br><em>Stay a while.</em></h2>
+        <p>At Ember &amp; Oak, the best nights are the unhurried ones. We bring the season to your plate, pour something lovely, and save you a seat.</p>
+        <div class="story-detail"><span>✳</span> Thoughtful ingredients, sourced close to home</div>
+        <div class="story-detail"><span>✳</span> Dinner, every day · 12:00 PM – 10:00 PM</div>
+      </div>
+    </section>
+
+    <section class="booking-section section-wrap" id="book">
+      <div class="section-heading">
+        <p class="eyebrow">YOUR EVENING, YOUR WAY</p>
+        <h2>Find your <em>table.</em></h2>
+        <p>Choose a day and time. We'll take care of the rest.</p>
+      </div>
+      <div class="booking-layout">
+        <div class="booking-controls card">
+          <div class="control-row">
+            <label class="field-label" for="booking-date">Date
+              <input id="booking-date" type="date">
+            </label>
+            <label class="field-label" for="party-size">Party
+              <select id="party-size">
+                <option value="1">1 guest</option><option value="2" selected>2 guests</option>
+                <option value="3">3 guests</option><option value="4">4 guests</option>
+                <option value="5">5 guests</option><option value="6">6 guests</option>
+                <option value="7">7 guests</option><option value="8">8 guests</option>
+                <option value="9">9 guests</option><option value="10">10 guests</option>
+              </select>
+            </label>
+          </div>
+          <div class="slots-heading">
+            <h3>Choose a time</h3>
+            <span class="slot-legend"><i class="legend-dot"></i> Available <i class="legend-dot limited"></i> Limited</span>
+          </div>
+          <div class="slot-grid" id="slot-grid" aria-live="polite"></div>
+          <p class="form-message" id="slot-message" role="status"></p>
+        </div>
+
+        <div class="guest-panel card" id="guest-panel">
+          <div class="guest-panel-intro">
+            <span class="step-number">01</span>
+            <div><h3>Your details</h3><p>We’ll keep your seat warm.</p></div>
+          </div>
+          <div class="selected-slot" id="selected-slot">Select a time to get started</div>
+          <form id="guest-form" novalidate>
+            <label class="field-label" for="guest-name">Full name
+              <input id="guest-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="e.g. Aman Shah" required>
+            </label>
+            <div class="control-row">
+              <label class="field-label" for="guest-phone">Phone
+                <input id="guest-phone" name="phone" type="tel" autocomplete="tel" maxlength="24" placeholder="+1 (555) 000-0000" required>
+              </label>
+              <label class="field-label" for="guest-email">Email
+                <input id="guest-email" name="email" type="email" autocomplete="email" maxlength="120" placeholder="you@example.com" required>
+              </label>
+            </div>
+            <label class="field-label" for="guest-request">Special request <span class="optional">(optional)</span>
+              <textarea id="guest-request" name="request" rows="3" maxlength="300" placeholder="A little note for our team"></textarea>
+            </label>
+            <button class="button button-dark button-wide" id="submit-booking" type="submit" disabled>Choose a time first</button>
+            <p class="form-message" id="guest-message" role="alert"></p>
+          </form>
+          <div id="confirmation" class="confirmation" aria-live="polite" hidden></div>
+        </div>
+      </div>
+      <p class="booking-note"><span>✳</span> Every reservation includes a relaxed 90-minute dining window.</p>
+    </section>
+
+    <section class="manage-section section-wrap" id="manage">
+      <div class="manage-card card">
+        <div>
+          <p class="eyebrow">PLANS CHANGE</p>
+          <h2>Manage your <em>booking.</em></h2>
+          <p>Enter your confirmation code to see the details or cancel your reservation.</p>
+        </div>
+        <form class="lookup-form" id="lookup-form" novalidate>
+          <label class="field-label" for="lookup-code">Booking code
+            <input id="lookup-code" type="text" placeholder="EO-4821" autocapitalize="characters" maxlength="12" required>
+          </label>
+          <button class="button button-dark" type="submit">Look up booking</button>
+          <p class="form-message" id="lookup-message" role="alert"></p>
+        </form>
+        <div class="lookup-result" id="lookup-result" aria-live="polite"></div>
+      </div>
+      <div class="waitlist-card card" id="waitlist-status" hidden aria-live="polite"></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand" href="#home">Ember <span>&amp;</span> Oak</a>
+    <p>Good food tastes better together.</p>
+    <a href="#book">Save your seat <span aria-hidden="true">↗</span></a>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

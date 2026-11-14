@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fffbf0">
+  <meta name="description" content="Ember & Oak staff reservations, waitlist, and table availability dashboard.">
+  <title>Staff dashboard — Ember &amp; Oak</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Allura&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header staff-site-header">
+    <a class="brand" href="index.html" aria-label="Ember and Oak customer page">Ember <span>&amp;</span> Oak</a>
+    <nav class="main-nav" id="staff-navigation" aria-label="Staff navigation" hidden>
+      <a href="#staff-reservations">Reservations</a>
+      <a href="#staff-waitlist-section">Waitlist</a>
+      <a href="#staff-notifications">Notifications</a>
+    </nav>
+    <a class="staff-link" href="index.html">Customer page <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="staff-login section-wrap" id="staff-login">
+      <div class="staff-login-card card">
+        <p class="eyebrow">STAFF ACCESS</p>
+        <h1>Welcome back, <em>team.</em></h1>
+        <p>Enter the staff password to open the dashboard.</p>
+        <form id="staff-login-form" novalidate>
+          <label class="field-label" for="staff-password">Password
+            <input id="staff-password" type="password" autocomplete="current-password" required>
+          </label>
+          <button class="button button-dark button-wide" type="submit">Open staff dashboard</button>
+          <p class="form-message" id="staff-login-message" role="alert"></p>
+        </form>
+        <p class="staff-login-note">Demo access only: this browser-only gate is for casual privacy, not secure authentication. You stay signed in in this tab until you log out or close it.</p>
+      </div>
+    </section>
+    <div id="staff-dashboard" hidden>
+      <section class="staff-section section-wrap" id="staff">
+        <div class="staff-heading">
+          <div>
+            <p class="eyebrow">STAFF WORKSPACE · DEMO MODE</p>
+            <h1>Good evening, <em>team.</em></h1>
+            <p class="staff-intro">Reservations, the floor, and the waitlist — all in one place. Changes are saved in this browser.</p>
+          </div>
+          <div class="staff-heading-actions">
+            <label class="compact-label staff-date-picker" for="staff-date">Service date <input id="staff-date" type="date"></label>
+            <button type="button" class="button button-soft" id="staff-logout">Log out</button>
+          </div>
+        </div>
+        <div class="staff-stats" id="staff-stats"></div>
+        <div class="staff-grid">
+          <article class="card staff-card staff-availability">
+            <div class="staff-card-heading">
+              <div><p class="eyebrow">30-MINUTE INTERVALS · 90-MINUTE BOOKINGS</p><h2>Table availability</h2></div>
+              <span class="floor-legend"><i class="legend-dot"></i> Free <i class="legend-dot booked-legend"></i> Reserved</span>
+            </div>
+            <p class="floor-help">Each cell shows whether a new 90-minute booking can start at that time without overlapping another reservation. Scroll to see the full service.</p>
+            <div class="availability-wrap"><div id="availability-grid"></div></div>
+          </article>
+          <article class="card staff-card" id="staff-reservations">
+            <div class="staff-card-heading"><div><p class="eyebrow">SELECTED SERVICE DATE</p><h2>Reservations</h2></div><span class="count-pill" id="reservation-count">0</span></div>
+            <div class="staff-list" id="reservation-list"></div>
+          </article>
+          <article class="card staff-card" id="staff-waitlist-section">
+            <div class="staff-card-heading"><div><p class="eyebrow">NEXT IN LINE</p><h2>Waitlist queue</h2></div><span class="count-pill" id="waitlist-count">0</span></div>
+            <div class="staff-list" id="staff-waitlist"></div>
+          </article>
+          <article class="card staff-card" id="staff-notifications">
+            <div class="staff-card-heading"><div><p class="eyebrow">SIMULATED EMAIL &amp; SMS</p><h2>Notification log</h2></div><button class="text-button" type="button" id="clear-notifications">Clear</button></div>
+            <div class="notification-list" id="notification-list"></div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <a class="brand" href="index.html">Ember <span>&amp;</span> Oak</a>
+    <p>Staff workspace · Demo data is stored locally in this browser.</p>
+    <a href="index.html">Return to customer page <span aria-hidden="true">↗</span></a>
+  </footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
